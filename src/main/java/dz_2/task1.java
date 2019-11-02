@@ -9,21 +9,23 @@ public class task1 {
             npe.toString();
         }
         catch (Exception e){
-            System.out.println("смоделирован NullPointerException:");
-            e.printStackTrace();
+            printException(e, "смоделирован NullPointerException:");
         }
         try{
             ArrayList<String> emptyList = new ArrayList<String>();
             emptyList.get(0);
         }catch (Exception e){
-            System.out.println("смоделирован ArrayIndexOutOfBoundsException:");
-            e.printStackTrace();
+            printException(e, "смоделирован ArrayIndexOutOfBoundsException:");
         }
         try{
             throw new ClassCastException();
         }catch (Exception e){
-            System.out.println("смоделирован бросок через throw:");
-            e.printStackTrace();
+            printException(e, "смоделирован бросок через throw:");
         }
+    }
+
+    private static void printException(Exception e, String s) {
+        System.out.println(s);
+        e.printStackTrace();
     }
 }
