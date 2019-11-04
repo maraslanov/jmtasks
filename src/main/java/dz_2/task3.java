@@ -13,12 +13,21 @@ public class task3 {
         }
         //сортировка1 и вывод
         Person[] array2 = BubbleSort.sort(array);
-        System.out.print("{");
-        for (int i = 0; i < n; i++) {
-            System.out.print(array2[i].toString()+", ");
-        }
-        System.out.print("}");
+        printArray(n, array2);
         //сортировка2 и вывод
+        Person[] array3 = ShellSort.sort(array);
+        printArray(n, array3);
+    }
+
+    private static void printArray(int n, Person[] array3) {
+        StringBuilder b = new StringBuilder();
+        b.append("{");
+        for (int i = 0; i < n; i++) {
+            b.append(array3[i].toString() + ", ");
+        }
+        b.deleteCharAt(b.length()-1);
+        b.append("}");
+        System.out.println(b.toString());
     }
 
     /**
