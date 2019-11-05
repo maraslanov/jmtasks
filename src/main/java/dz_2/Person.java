@@ -59,10 +59,9 @@ public class Person implements Comparable<Person> {
             if (o.getPol() == Sex.MAN) {
                 return -1;
             } else {
-                comapreWithOneSex(o);
+                return comapreWithOneSex(o);
             }
         }
-        return 0;
     }
 
     private int comapreWithOneSex(Person o) {
