@@ -1,7 +1,4 @@
-package dz_2;
-
-import java.util.Collection;
-import java.util.List;
+package dz_2.task3;
 
 public class BubbleSort {
     /**

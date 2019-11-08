@@ -1,4 +1,4 @@
-package dz_2;
+package dz_2.task3;
 
 public class ShellSort {
     /**

@@ -1,4 +1,4 @@
-package dz_2;
+package dz_2.task2;
 
 import java.util.Random;
 
