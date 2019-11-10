@@ -1,10 +1,11 @@
 package dz_3.task1;
 
-import dz_3.task2.ObjectBox;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 
-import java.util.*;
-
-public class MathBox extends ObjectBox {
+public class MathBox {
     private Set<Number> numberSet = new HashSet<>();
 
     public Set<Number> getNumberSet() {
