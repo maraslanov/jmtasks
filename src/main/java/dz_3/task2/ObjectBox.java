@@ -26,7 +26,7 @@ public class ObjectBox implements IObjectBox {
      * @param object
      */
     public void deleteObject(Object object) {
-        if (set.contains(object)) {
+        if (set.contains(object)) {//для Set не нужно проверять
             set.remove(object);
         }
     }
