@@ -2,7 +2,7 @@ package dz_2.task2;
 
 import java.util.Random;
 
-public class task2 {
+public class Task2 {
     public static void main(String[] args) {
         int n = 100;
         Random random = new Random();

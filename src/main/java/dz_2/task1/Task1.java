@@ -2,7 +2,7 @@ package dz_2.task1;
 
 import java.util.ArrayList;
 
-public class task1 {
+public class Task1 {
     public static void main(String[] args) {
         try{
             Object npe = null;

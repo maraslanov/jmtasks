@@ -1,6 +1,6 @@
 package dz_3.task1;
 
-public class task1 {
+public class Task1 {
     public static void main(String[] args) {
         Number[] arrNumbers = new Number[]{0, 10, 20L, 20, 20D, 20.7};
         MathBox mathBox = new MathBox(arrNumbers);

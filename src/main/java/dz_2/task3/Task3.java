@@ -2,7 +2,7 @@ package dz_2.task3;
 
 import java.util.Random;
 
-public class task3 {
+public class Task3 {
     public static void main(String[] args) {
         int n = 10000;
         Person[] array = new Person[n];
