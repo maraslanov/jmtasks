@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class ObjectBox implements IObjectBox {
-    private Set set = new HashSet();//вставка и удаление О(1)
+    private Set<Object> set = new HashSet();//вставка и удаление О(1)
 
     public Set getSet() {
         return set;
