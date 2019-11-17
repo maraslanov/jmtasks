@@ -5,6 +5,9 @@ import java.util.*;
 
 public class Task1 {
     public static void main(String[] args) {
+        //самое важное
+        String pomoika = "src/main/java/dz_6/pomoika";
+        Arrays.stream(new File(pomoika).listFiles()).forEach(File::delete);
         //читаем из файла в строчку:
         String alltext = readFile("src/main/resources/forread.txt");
         //удаляем лишние пробелы и спец символы
@@ -14,7 +17,7 @@ public class Task1 {
         Set<String> items = new HashSet<String>(Arrays.asList(alltext.trim().split(" ")));
         List<String> targetList = new ArrayList<>(items);
         targetList.sort(String::compareToIgnoreCase);//компаратор сравнивает без учета регистра
-        writeFile("forresult.txt",targetList.toString());
+        writeFile(pomoika + File.separator + "forresult.txt", targetList.toString());
     }
 
     /**
@@ -38,6 +41,7 @@ public class Task1 {
 
     /**
      * читает файл из ресурсов
+     *
      * @param filename
      * @return
      */
@@ -62,6 +66,7 @@ public class Task1 {
 
     /**
      * записывает в файл строку
+     *
      * @param fileName
      * @param content
      */
