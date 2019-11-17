@@ -3,7 +3,7 @@ package dz_5;
 import java.util.Objects;
 
 public class Person {
-    private String name;
+    private final String name;
     private int age;
     private Gender gender;
 
@@ -34,6 +34,12 @@ public class Person {
                 Objects.equals(name, person.name) &&
                 gender == person.gender;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
 
     @Override
     public String toString() {
