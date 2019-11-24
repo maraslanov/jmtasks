@@ -48,7 +48,8 @@ public class Animal implements Comparable<Animal> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return Objects.equals(uniqueNumber, animal.uniqueNumber);
+        //return Objects.equals(uniqueNumber, animal.uniqueNumber);
+        return Objects.equals(name, animal.getName()) && Objects.equals(person, animal.getPerson()) && weight == animal.getWeight();
     }
 
     @Override

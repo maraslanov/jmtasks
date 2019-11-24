@@ -14,10 +14,9 @@ public class Task1 {
         alltext = alltext.replaceAll("\n|\r\n", " ");
         alltext = deleteLetters(alltext);
         //в множество
-        Set<String> items = new HashSet<String>(Arrays.asList(alltext.trim().split(" ")));
-        List<String> targetList = new ArrayList<>(items);
-        targetList.sort(String::compareToIgnoreCase);//компаратор сравнивает без учета регистра
-        writeFile(pomoika + File.separator + "forresult.txt", targetList.toString());
+        Set<String> items = new TreeSet<String>(Arrays.asList(alltext.trim().toLowerCase().split(" ")));
+        //приведение к регистру для быстрой сортировки
+        writeFile(pomoika + File.separator + "forresult.txt", items.toString());
     }
 
     /**

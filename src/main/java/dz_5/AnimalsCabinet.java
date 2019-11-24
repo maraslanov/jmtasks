@@ -27,7 +27,8 @@ public class AnimalsCabinet {
         if (animalsMap.containsKey(animal.getName())) {
             Map<String, Animal> findedMap = animalsMap.get(animal.getName());
             //проверим наличие животного в картотеке
-            if (findAnimal(animal) == null) {
+            if (!findedMap.containsValue(animal)){
+            //if (findAnimal(animal) == null) {
                 //запишем новое животное
                 findedMap.put(animal.getUniqueNumber(), animal);
             } else {
@@ -65,23 +66,13 @@ public class AnimalsCabinet {
      * выводит животных в отсортированном порядке. Поля для сортировки –  хозяин, кличка животного, вес.
      */
     public void printAnimals() {
-        ArrayList<Animal> animalList = new ArrayList<Animal>();
+        List<Animal> animalList = new ArrayList<Animal>();
         for (Map.Entry<String, Map<String, Animal>> entry : animalsMap.entrySet()) {
             Set<Animal> tempSet = new HashSet<>(entry.getValue().values());
             animalList.addAll(tempSet);
         }
-        Collections.sort(animalList, new Comparator<Animal>() {//больше нигде не используется, не выносил отдельный класс
-            @Override
-            public int compare(Animal animal1, Animal animal2) {
-                int namePerson = animal1.getPerson().getName().compareTo(animal2.getPerson().getName());
-                if (namePerson != 0) return namePerson;
-                int nameAnimal = animal1.getName().compareTo(animal2.getName());
-                if (nameAnimal != 0) return nameAnimal;
-                return animal1.getWeight() - animal2.getWeight();
-            }
-        });
-        for (
-                Animal animal : animalList) {
+        Collections.sort(animalList);
+        for (Animal animal : animalList) {
             System.out.println(animal);
         }
 
