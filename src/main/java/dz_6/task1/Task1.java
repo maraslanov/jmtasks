@@ -14,7 +14,7 @@ public class Task1 {
         alltext = alltext.replaceAll("\n|\r\n", " ");
         alltext = deleteLetters(alltext);
         //в множество
-        Set<String> items = new TreeSet<String>(Arrays.asList(alltext.trim().toLowerCase().split(" ")));
+        Set<String> items = new TreeSet<>(Arrays.asList(alltext.trim().toLowerCase().split(" ")));
         //приведение к регистру для быстрой сортировки
         writeFile(pomoika + File.separator + "forresult.txt", items.toString());
     }

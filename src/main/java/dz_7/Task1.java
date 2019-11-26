@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Task1 {
-    public static ConcurrentHashMap<Integer, BigInteger> cache = new ConcurrentHashMap<>();//1)почему в статике нельзя параметризировано в new?
+    public static ConcurrentHashMap<Integer, BigInteger> cache = new ConcurrentHashMap<>();
 
     private static BigInteger calculateFactorial(Integer n) {
         if (cache.containsKey(n)) {
@@ -26,10 +26,9 @@ public class Task1 {
     public static void main(String[] args) {
         //сгенерировать массив из n чисел
         int n = 100;//пусть состоит из 100 элементов
+        cache.put(0, BigInteger.ONE);
         Integer[] array = new Integer[n];
-        for (int i = 0; i < n; i++) {
-            array[i] = new Random().nextInt(1000);
-        }
+        generateArray(n, array);
         BigInteger[] factorialArr = new BigInteger[n];
         //выделим n потоков на вычисление факториала
         for (int i = 0; i < n; i++) {
@@ -40,9 +39,9 @@ public class Task1 {
                 public void run() {
                     //вычисляем факториал
                     if (cache.containsKey(finalI)) {
-                        factorialArr[0] = cache.get(finalI);
+                        factorialArr[finalI] = cache.get(array[finalI]);
                     } else {
-                        factorialArr[finalI] = calculateFactorial(finalI);
+                        factorialArr[array[finalI]] = calculateFactorial(array[finalI]);
                     }
                 }
             }).start();    //Запуск потока
@@ -51,6 +50,12 @@ public class Task1 {
         //2)надо проверить что все потоки завершились?
         for (int i = 0; i < n; i++) {
             System.out.println("i=" + i + " factorial=" + factorialArr[i]);
+        }
+    }
+
+    private static void generateArray(int n, Integer[] array) {
+        for (int i = 0; i < n; i++) {
+            array[i] = new Random().nextInt(1000);
         }
     }
 }
