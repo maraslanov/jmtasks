@@ -12,7 +12,7 @@ public class Task1 {
             return cache.get(n);
         }
         BigInteger result = BigInteger.valueOf(1);
-        for (int i = 2; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {
             if (cache.containsKey(i)) {
                 result = cache.get(i);
             } else {
@@ -34,14 +34,15 @@ public class Task1 {
         for (int i = 0; i < n; i++) {
             //Создание потока
             System.out.println("начато вычисление факториала " + i + "-го элемента");
-            int finalI = i;
+            int aI = array[i];
+            int index = i;
             new Thread(new Runnable() {
                 public void run() {
                     //вычисляем факториал
-                    if (cache.containsKey(finalI)) {
-                        factorialArr[finalI] = cache.get(array[finalI]);
+                    if (cache.containsKey(aI)) {
+                        factorialArr[index] = cache.get(aI);
                     } else {
-                        factorialArr[array[finalI]] = calculateFactorial(array[finalI]);
+                        factorialArr[index] = calculateFactorial(aI);
                     }
                 }
             }).start();    //Запуск потока
@@ -49,13 +50,13 @@ public class Task1 {
         }
         //2)надо проверить что все потоки завершились?
         for (int i = 0; i < n; i++) {
-            System.out.println("i=" + i + " factorial=" + factorialArr[i]);
+            System.out.println("i=" + i + " a[i]=" + array[i] + " factorial=" + factorialArr[i]);
         }
     }
 
     private static void generateArray(int n, Integer[] array) {
         for (int i = 0; i < n; i++) {
-            array[i] = new Random().nextInt(1000);
+            array[i] = new Random().nextInt(100);
         }
     }
 }
