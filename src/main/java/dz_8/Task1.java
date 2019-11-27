@@ -10,18 +10,19 @@ public class Task1 {
         Arrays.stream(new File(pomoika).listFiles()).forEach(File::delete);
         //создаем объект и серриализуем
         MyXMLMapper mapper = new MyXMLMapper();
-        SuperObject superMan = new SuperObject(SuperType.Human);
-        superMan.setStatus(1);
-        superMan.setName("Clark Kent");
-        superMan.setPersists(new Double(123000000));
+        SuperObject superMan = new SuperObject("Clark Kent", SuperType.Human, null, 1);
+        superMan.setSecret(new SuperObject("SuperMan", SuperType.Alien, null, 0));
+        System.out.println("Объект до серриализации:");
+        System.out.println(superMan.toString());
         try {
-            mapper.writeValue(pomoika + File.separator + "result.txt", superMan);
+            mapper.serialize(superMan, pomoika + File.separator + "result.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
         //прочитаем сериализованный файл в новый объект
         try {
-            mapper.readValue(pomoika + File.separator + "result.txt");
+            System.out.println("Объект после серриализации:");
+            System.out.println(mapper.deSerialize(pomoika + File.separator + "result.txt").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }

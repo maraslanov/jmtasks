@@ -1,19 +1,18 @@
 package dz_8;
 
-public class SuperObject<T> {
+public class SuperObject {
     private String name;
-    private final SuperType type;
-    public Double persists;
+    private SuperType type;
+    private SuperObject secret;
     private transient int status;
 
-    public SuperObject(SuperType type) {
-        this.type = type;
+    public SuperObject() {
     }
 
-    public SuperObject(String name, SuperType type, Double persists, int status) {
+    public SuperObject(String name, SuperType type, SuperObject persists, int status) {
         this.name = name;
         this.type = type;
-        this.persists = persists;
+        this.secret = persists;
         this.status = status;
     }
 
@@ -25,8 +24,12 @@ public class SuperObject<T> {
         this.name = name;
     }
 
-    public SuperType getType() {
-        return type;
+    public SuperObject getSecret() {
+        return secret;
+    }
+
+    public void setSecret(SuperObject secret) {
+        this.secret = secret;
     }
 
     public int getStatus() {
@@ -37,11 +40,12 @@ public class SuperObject<T> {
         this.status = status;
     }
 
-    public Double getPersists() {
-        return persists;
-    }
+    @Override
+    public String toString() {
+        return "Имя: " + this.name +
+                " type-" + this.type +
+                " status-" + this.status +
+                " secret: " + (getSecret() != null ? "[" + getSecret().toString() + "]" : "не известен");
 
-    public void setPersists(Double persists) {
-        this.persists = persists;
     }
 }
