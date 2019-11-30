@@ -2,7 +2,6 @@ package dz_10;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.SimpleTimeZone;
 
 import static dz_10.Consts.MAGICWORD;
 
