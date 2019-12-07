@@ -5,6 +5,8 @@ import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static dz_10.Consts.welcome;
+
 /**
  * in - поток чтения из сокета
  * out - поток чтения в сокет
@@ -94,7 +96,7 @@ public class Client {
     private static void readNickName() throws IOException {
         System.out.print("Введите свое имя: ");
         nickname = inputUser.readLine();
-        out.write("Добро пожаловать в общий чат, " + nickname + "\n");
+        out.write(welcome + nickname + "\n");
         out.flush();
     }
 
