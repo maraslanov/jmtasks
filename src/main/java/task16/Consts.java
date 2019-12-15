@@ -1,11 +1,8 @@
 package task16;
 
 public class Consts {
-    public static String driver = "org.postgresql.Driver";
-    public static String host = "localhost";
-    public static String port = "5432";
-    public static String database = "jtask";
-    public static String user = "postgres";
-    public static String password = "postgres";
-    public static String urlConnection = "jdbc:postgresql://";
+    public static String INSERT_USER = "INSERT INTO \"USER\" " +
+            "(name, birthday, login_id, city, email) VALUES (?,?,?,?,?)";
+    public static String SELECT_USER = "SELECT * from \"USER\" " +
+            "WHERE login_id = ? and name = ?";
 }
