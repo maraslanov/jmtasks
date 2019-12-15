@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+    <Appenders>
+        <JDBC name="db" tableName="logs">
+            <DriverManager connectionString="jdbc:postgresql://127.0.0.1:5432/jtask"
+                           driverClassName="org.postgresql.Driver"
+                           userName="postgres"
+                           password="postgres"/>
+            <Column name="id" pattern="%u" isUniCode="false"/>
+            <Column name="date" isEventTimestamp="true" isUniCode="false"/>
+            <Column name="log_level" pattern="%logger" isUniCode="false"/>
+            <Column name="message" pattern="%m" isUniCode="false"/>
+            <Column name="exception" pattern="%throwable" isUniCode="false"/>
+        </JDBC>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="db"/>
+        </Root>
+    </Loggers>
+</Configuration>

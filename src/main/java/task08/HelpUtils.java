@@ -1,6 +1,9 @@
 package task08;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * класс приводит строку к объекту нужного типа

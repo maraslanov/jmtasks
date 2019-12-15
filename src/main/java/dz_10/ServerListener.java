@@ -41,12 +41,13 @@ public class ServerListener extends Thread {
                 //отправляем только слушателю идентифай
                 if (text.indexOf(("\"" + getIdentify() + " ")) > 0) {
                     senIfPersonMessage(text);
-                    continue;
-                }
-                System.out.println("Общий чат: " + text);
-                //пересылаем сообщение всем остальным в общем чате
-                for (ServerListener thread : Server.serverList) {
-                    sendText(text);
+                    //continue;
+                } else {
+                    System.out.println("Общий чат: " + text);
+                    //пересылаем сообщение всем остальным в общем чате
+                    for (ServerListener thread : Server.serverList) {
+                        sendText(text);
+                    }
                 }
             }
         } catch (IOException e) {
