@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import task16.Task1;
+import jcore.task16.Task1;
 
 import java.sql.Connection;
 import java.sql.SQLException;

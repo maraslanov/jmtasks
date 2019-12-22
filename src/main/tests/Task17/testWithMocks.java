@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import task16.Task1;
+import jcore.task16.Task1;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
