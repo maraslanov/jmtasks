@@ -7,8 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static ConnectionManager.ConnectionConsts.driver;
-import static jcore.task15.Consts.*;
+import static ConnectionManager.ConnectionConsts.*;
 
 public class ConnectionManager implements IConnectionManager {
 
