@@ -9,11 +9,9 @@ import javax.ejb.EJB;
 import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @EJB
 public class UserDaoJDBC implements IUserDao {
@@ -32,34 +30,19 @@ public class UserDaoJDBC implements IUserDao {
 
     @Override
     public boolean addUser(UserPojo mobile) {
-        try (Connection connection = connectionManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_USER)) {
-            preparedStatement.setString(1, mobile.getLogin());
-            preparedStatement.setString(2, mobile.getPassword());
-            preparedStatement.execute();
-        } catch (SQLException e) {
+        try {
+            return UserFacade.addUser(mobile, connectionManager);
+        } catch (Exception e) {
             LOGGER.error("Some thing wrong in addUser method", e);
             return false;
         }
-        return true;
     }
 
     @Override
     public UserPojo getUserByParam(String login, String password) {
-        try (Connection connection = connectionManager.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FROM_USER)) {
-            preparedStatement.setString(1, login);
-            preparedStatement.setString(2, password);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    return new UserPojo(
-                            resultSet.getInt(1),
-                            resultSet.getString(9),
-                            resultSet.getString(8)
-                    );
-                }
-            }
-        } catch (SQLException e) {
+        try {
+            return UserFacade.getUserByParam(login, password, connectionManager);
+        } catch (Exception e) {
             LOGGER.error("Some thing wrong in getUserById method", e);
         }
         return null;
@@ -67,7 +50,6 @@ public class UserDaoJDBC implements IUserDao {
 
     @Override
     public boolean updateUserById(UserPojo mobile) {
-
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER)) {
             preparedStatement.setString(1, mobile.getPassword());
@@ -82,18 +64,9 @@ public class UserDaoJDBC implements IUserDao {
 
     @Override
     public Collection<UserPojo> getAllUsers() {
-        List<UserPojo> lstmb = new ArrayList<>();
-        try (Connection connection = connectionManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_FROM_USER);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-            while (resultSet.next()) {
-                lstmb.add(new UserPojo(
-                        resultSet.getInt(1),
-                        resultSet.getString(9),
-                        resultSet.getString(8)));
-            }
-            return lstmb;
-        } catch (SQLException e) {
+        try {
+            return UserFacade.getAllUsers(connectionManager);
+        } catch (Exception e) {
             LOGGER.error("Some thing wrong in getAllUsers method", e);
         }
         return new ArrayList<>();
